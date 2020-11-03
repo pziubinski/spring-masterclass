@@ -17,6 +17,7 @@ public class Application {
                     .money(LocalMoney.of(1_000))
                     .build();
             var payment = paymentService.process(paymentRequest);
+
             log.info(payment.toString());
         }
     }
