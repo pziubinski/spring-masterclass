@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
 
-            var paymentService = applicationContext.getBean(LoggingPaymentService.class);
+            var paymentService = applicationContext.getBean(PaymentService.class);
             var paymentRequest = PaymentRequest.builder()
                     .money(LocalMoney.of(1_000))
                     .build();
