@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd">
+
+    <aop:aspectj-autoproxy/>
+    <!--context:annotation-config/>
+    <!context:component-scan base-package="pl.training.shop"-->
+
+    <bean id="incrementalPaymentIdGenerator" class="pl.training.shop.payments.IncrementalPaymentIdGenerator"/>
+
+    <bean id="uuidPaymentIdGenerator" class="pl.training.shop.payments.UUIDPaymentIdGenerator"/>
+
+    <bean id="hashMapPaymentRepository" class="pl.training.shop.payments.HashMapPaymentRepository"/>
+
+    <bean id="fakePaymentService" class="pl.training.shop.payments.FakePaymentService" init-method="init" destroy-method="destroy">
+        <constructor-arg name="paymentIdGenerator" ref="uuidPaymentIdGenerator"/>
+        <constructor-arg name="paymentRepository" ref="hashMapPaymentRepository"/>
+    </bean>
+
+    <bean class="pl.training.shop.payments.PaymentConsoleLogger"/>
+
+</beans>
