@@ -26,7 +26,7 @@ public class PaymentsConfiguration {
         return new HashMapPaymentRepository();
     }
 
-    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Bean
     public PaymentService fakePaymentService(PaymentIdGenerator paymentIdGenerator, PaymentRepository paymentRepository) {
         return new FakePaymentService(paymentIdGenerator, paymentRepository);
     }
