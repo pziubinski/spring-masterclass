@@ -3,7 +3,7 @@ package pl.training.shop;
 import lombok.extern.java.Log;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.training.shop.orders.Order;
-import pl.training.shop.payments.*;
+import pl.training.shop.payments.LocalMoney;
 import pl.training.shop.products.Product;
 import pl.training.shop.products.ProductType;
 

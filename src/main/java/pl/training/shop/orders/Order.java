@@ -9,6 +9,8 @@ import pl.training.shop.payments.LocalMoney;
 import pl.training.shop.payments.Payment;
 import pl.training.shop.products.Product;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,8 +19,10 @@ import java.util.List;
 public class Order {
 
     private Long id;
+    @NotEmpty
     @NonNull
     private List<Product> products;
+    @Valid
     private Payment payment;
 
     public FastMoney getTotalPrice() {
